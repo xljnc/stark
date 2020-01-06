@@ -1,1 +1,26 @@
-spring
+stark:
+  global:
+    author: qiyu
+    outputDir: output/
+    fileOverride: true
+    open: false
+  datasource:
+    driverName: com.mysql.cj.jdbc.Driver
+    url:
+    username:
+    password:
+  package:
+    parent: com.wt.test
+  strategy:
+    entityLombokModel: true
+    restControllerStyle: true
+    superServiceImplClass: com.wt.stark.service.BaseServiceImpl
+  template:
+    entity: template/entity.java
+    mapper: template/mapper.java
+    xml: template/mapper.xml
+    service: template/service.java
+    serviceImpl: template/serviceImpl.java
+    controller: template/controller.java
+
+
