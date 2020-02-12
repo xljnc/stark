@@ -6,11 +6,11 @@ stark:
     open: false
   datasource:
     driverName: com.mysql.cj.jdbc.Driver
-    url:
-    username:
-    password:
+    url: jdbc:mysql://192.168.1.253:3386/ipark?zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai&useAffectedRows=true
+    username: ipark
+    password: ipark
   package:
-    parent: com.wt.test
+    parent: ai.ii.ipark.cloud.user
   strategy:
     entityLombokModel: true
     restControllerStyle: true
