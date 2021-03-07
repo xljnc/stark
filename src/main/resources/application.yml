@@ -1,0 +1,28 @@
+stark:
+  global:
+    author: 一贫
+    outputDir: output/
+    fileOverride: true
+    open: false
+  datasource:
+    driverName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://rm-bp1nnjhvq3tra324d.mysql.rds.aliyuncs.com/open_gateway?zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai&useAffectedRows=true
+    username: root
+    password: v7#ROHq7JmKD
+  package:
+    parent: cn.seenew.future.his.open.gateway
+  strategy:
+    entityLombokModel: true
+    restControllerStyle: true
+    superServiceClass: com.wt.stark.service.BaseService
+    superServiceImplClass: com.wt.stark.service.impl.BaseServiceImpl
+    superMapperClass: com.wt.stark.mapper.BatchBaseMapper
+  template:
+    entity: template/entity.java
+    mapper: template/mapper.java
+    xml: template/mapper.xml
+    service: template/service.java
+    serviceImpl: template/serviceImpl.java
+    controller: template/controller.java
+
+

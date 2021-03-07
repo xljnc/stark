@@ -1,0 +1,65 @@
+package com.wt.stark.service.impl;
+
+import com.baomidou.mybatisplus.extension.toolkit.SqlHelper;
+import com.wt.stark.mapper.BatchBaseMapper;
+import com.wt.stark.service.BaseService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.io.Serializable;
+import java.util.Collection;
+import java.util.List;
+
+/**
+ * mybatis plus 基础类
+ *
+ * @author 一贫
+ * @date 2020/12/29 17:47
+ */
+public class BaseServiceImpl<M extends BatchBaseMapper<T>, T> implements BaseService<T> {
+
+    @Autowired
+    protected M baseMapper;
+
+    @Override
+    public M getBaseMapper() {
+        return baseMapper;
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public boolean insert(T entity) {
+        return SqlHelper.retBool(getBaseMapper().insert(entity));
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public Integer insertBatchSomeColumn(Collection<T> entityList) {
+        return baseMapper.insertBatchSomeColumn(entityList);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public boolean updateById(T entity) {
+        return SqlHelper.retBool(getBaseMapper().updateById(entity));
+
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public boolean deleteById(Serializable id) {
+        return SqlHelper.retBool(getBaseMapper().deleteById(id));
+    }
+
+    @Override
+    public T getById(Serializable id) {
+        return getBaseMapper().selectById(id);
+    }
+
+    @Override
+    public List<T> listByIds(Collection<? extends Serializable> ids) {
+        return getBaseMapper().selectBatchIds(ids);
+    }
+
+
+}
